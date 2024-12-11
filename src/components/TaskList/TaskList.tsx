@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { ITaskItem, TaskItem } from "../TaskItem/TaskItem";
 
-import { Alert, Box, Divider, Stack } from "@mui/material";
+import { Box, Divider, Stack } from "@mui/material";
 
 interface ITaskList {
   tasks: ITaskItem[];
@@ -8,7 +9,7 @@ interface ITaskList {
   changeTaskStatus: (id: number) => void;
 }
 
-export const TaskList: React.FC<ITaskList> = ({ tasks, deleteTask, changeTaskStatus }) => {
+export const TaskList: React.FC<ITaskList> = memo(({ tasks, deleteTask, changeTaskStatus }) => {
   return (
     <Stack justifyContent={"center"}>
       {tasks.map(({ id, text, status }: ITaskItem, i) => {
@@ -21,4 +22,4 @@ export const TaskList: React.FC<ITaskList> = ({ tasks, deleteTask, changeTaskSta
       })}
     </Stack>
   );
-};
+});

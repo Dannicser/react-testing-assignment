@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { Box, Button, Stack } from "@mui/material";
 
 export enum FilterType {
@@ -12,7 +14,7 @@ interface IFilterBar {
   deleleCompletedTask: () => void;
 }
 
-export const FilterBar: React.FC<IFilterBar> = ({ changeFilter, deleleCompletedTask, completed }) => {
+export const FilterBar: React.FC<IFilterBar> = memo(({ changeFilter, deleleCompletedTask, completed }) => {
   return (
     <Stack mt={2} flexDirection={"row"} justifyContent={"space-between"}>
       <Box>
@@ -42,4 +44,4 @@ export const FilterBar: React.FC<IFilterBar> = ({ changeFilter, deleleCompletedT
       </Box>
     </Stack>
   );
-};
+});

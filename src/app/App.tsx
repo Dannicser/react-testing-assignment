@@ -100,6 +100,8 @@ function App() {
     }
   }
 
+  console.log("render");
+
   return (
     <div className="App">
       <TaskInput value={taskValue} addTask={addTask} inputHandler={inputHandler} />

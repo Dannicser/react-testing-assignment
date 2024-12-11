@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { Box, Button, Checkbox, Stack, Typography } from "@mui/material";
 
 export enum TaskStatus {
@@ -14,7 +16,7 @@ export interface ITaskItem {
   deleteTask?: (id: number) => void;
 }
 
-export const TaskItem: React.FC<ITaskItem> = ({ id, text, status, changeTaskStatus, deleteTask, index }) => {
+export const TaskItem: React.FC<ITaskItem> = memo(({ id, text, status, changeTaskStatus, deleteTask, index }) => {
   return (
     <Box key={id} m={2}>
       <Stack alignItems={"center"} justifyContent={"space-between"} flexDirection={"row"}>
@@ -28,4 +30,4 @@ export const TaskItem: React.FC<ITaskItem> = ({ id, text, status, changeTaskStat
       </Stack>
     </Box>
   );
-};
+});

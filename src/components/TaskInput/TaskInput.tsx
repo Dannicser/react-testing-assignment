@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { Button, Container, Stack, TextField } from "@mui/material";
 
 interface ITaskInput {
@@ -6,7 +8,7 @@ interface ITaskInput {
   value?: string;
 }
 
-export const TaskInput: React.FC<ITaskInput> = ({ inputHandler, addTask, value }) => {
+export const TaskInput: React.FC<ITaskInput> = memo(({ inputHandler, addTask, value }) => {
   function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     inputHandler?.(e.target.value);
   }
@@ -41,4 +43,4 @@ export const TaskInput: React.FC<ITaskInput> = ({ inputHandler, addTask, value }
       </Stack>
     </Container>
   );
-};
+});
