@@ -18,6 +18,10 @@ function App() {
   const [filterType, setFilterType] = useState<FilterType | TaskStatus>(FilterType.all);
 
   useEffect(() => {
+    setInitialTasks();
+  }, []);
+
+  useEffect(() => {
     const initialParam = getQuaryParam("filter");
 
     if (initialParam) {
@@ -33,6 +37,7 @@ function App() {
   }, [filterType]);
 
   useEffect(() => {
+    saveTasksToLS();
     filterTasks();
   }, [tasks]);
 
@@ -82,6 +87,18 @@ function App() {
   }
 
   const completedTask = useMemo(() => tasks.filter((task) => task.status !== TaskStatus.compeleted).length, [tasks]);
+
+  function saveTasksToLS() {
+    window.localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
+  function setInitialTasks() {
+    const data = JSON.parse(window.localStorage.getItem("tasks") || "");
+
+    if (data?.length) {
+      setTasks(data);
+    }
+  }
 
   return (
     <div className="App">

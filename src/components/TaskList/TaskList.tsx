@@ -9,14 +9,6 @@ interface ITaskList {
 }
 
 export const TaskList: React.FC<ITaskList> = ({ tasks, deleteTask, changeTaskStatus }) => {
-  if (!tasks.length) {
-    return (
-      <Alert variant="filled" severity="warning">
-        There is no task in this section yet. Add one!
-      </Alert>
-    );
-  }
-
   return (
     <Stack justifyContent={"center"}>
       {tasks.map(({ id, text, status }: ITaskItem, i) => {
