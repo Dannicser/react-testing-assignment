@@ -93,12 +93,8 @@ function App() {
         <TaskList changeTaskStatus={changeTaskStatus} deleteTask={deleteTask} tasks={filteredTasks} />
       </div>
       <div className={"filterbar"}>
-        {tasks.length ? (
-          <>
-            <Divider />
-            <FilterBar completed={completedTask} deleleCompletedTask={deleleCompletedTask} changeFilter={changeFilter} />
-          </>
-        ) : null}
+        <Divider />
+        <FilterBar completed={completedTask} deleleCompletedTask={deleleCompletedTask} changeFilter={changeFilter} />
       </div>
     </div>
   );
