@@ -93,10 +93,10 @@ function App() {
   }
 
   function setInitialTasks() {
-    const data = JSON.parse(window.localStorage.getItem("tasks") || "");
+    const data = window.localStorage.getItem("tasks");
 
-    if (data?.length) {
-      setTasks(data);
+    if (data) {
+      setTasks(JSON.parse(data));
     }
   }
 
